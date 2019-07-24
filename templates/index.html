@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block body %}
+<div style= "margin-top:25px;"  class= "container">
+<h3>Do list</h3>
+<hr><hr>
+<form action="/add" method="post">
+<div class="form-group">
+    <label for="exampleInputEmail1">do list</label>
+    <input type="text" class="form-control" name="title" id="exampleInputEmail1" placeholder="Enter text">
+    <br>
+    <button type="submit" class="btn btn-warning">success</button>
+  </div>
+  <hr>
+</form>
+</div>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">title</th>
+      <th scope="col">todo complete</th>
+      <th scope="col">delete</th>
+      <th scope="col">update</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for todo in todos  %}
+  <tr>
+      <th scope="row">{{todo.id}}</th>
+      <td>{{todo.title}}</td>
+        <td>{{todo.complete}}</td>
+     
+      
+      <td><a href ="/delete/{{todo.id}}" class="btn btn-danger">delete</a></td>
+      <td><a href = "/update/{{todo.id}}" class="btn btn-danger">update</a></td>
+    </tr> 
+
+  {% endfor %}
+    
+    
+  </tbody>
+</table>
+
+{% endblock body %}
